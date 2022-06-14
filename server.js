@@ -29,10 +29,10 @@ app.get('/search', async (request, response) => {       //Hey Mongo, search the 
     try{
         let result = await collection.aggregate([       // await some results and aggregate into an array (take a group of things and bundle them together)
             {
-                "$Search": {                        // passing in a search
+                "$search": {                        // passing in a search
                     "autocomplete": {
                         "query": `${request.query.query}`,  //passing in a specific query
-                        "path": "title,",           // search within the 'title' property
+                        "path": "title",           // search within the 'title' property
                         "fuzzy": {                  // type of search
                             "maxEdits": 2,          // user can make up to two spelling errors
                             "prefixLength": 3       // user must type in at least 3 letters before autocomplete

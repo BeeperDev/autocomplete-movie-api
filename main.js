@@ -15,13 +15,13 @@ $(document).ready(function() {
         minLength: 2,
         select: function(event, ui) {   // hey server, can you send the id?
             console.log(ui.item.id)
-            fetch(`http://localhost:3000/get/${ui.item.id}`)
+            fetch(`http://localhost:8000/get/${ui.item.id}`)
             .then(result => result.json())
             .then(result => {
                 $('#cast').empty()      //git rid of cast already there
                 result.cast.forEach(cast => 
                     {
-                        $(cast).append(`<li>${cast}</li>`)
+                        $('#cast').append(`<li>${cast}</li>`)
                     })
                     $('img').attr('src', result.poster) // set source = the object's poster img
             })
